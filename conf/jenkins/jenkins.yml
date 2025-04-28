@@ -1,0 +1,14 @@
+pipeline:
+  stages:
+    - name: Validate
+      script: |
+        ./validate_configs.sh
+        
+    - name: Deploy
+      script: |
+        ./deploy_to_airflow.sh ${TARGET_ENV}
+        
+    - name: Notify
+      condition: always()
+      script: |
+        ./send_deploy_report.sh
