@@ -11,3 +11,4 @@ dependencies:
       - prepare_data
       - calculate_kpis
     schedule: "0 */2 * * *"  # Every 2 hours
+    
