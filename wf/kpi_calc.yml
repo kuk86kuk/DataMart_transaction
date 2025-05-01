@@ -1,0 +1,22 @@
+version: 2.0
+metadata:
+  description: "Daily KPI calculation"
+  owner: "analytics-team"
+
+execution:
+  schedule: "0 8 * * *"  # Run daily at 8 AM
+  timeout: 3600  # 1 hour
+
+tasks:
+  - name: prepare_data
+    type: sql
+    script: "../sql/dml/tran_arrl/pred_stg.sql"
+    params:
+      processing_date: "${ds}"
+      
+  - name: calculate_kpis
+    type: sql
+    script: "../sql/dml/tran_arrl/aggregate.sql"
+    requires: [prepare_data]
+    params:
+      processing_date: "${ds}"
