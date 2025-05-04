@@ -3,4 +3,5 @@ pipeline:
   application_args:
       --sql-base: "{{ /sql/datamarts/ }}"
       --env: "{{ prod }}"
-    application: "/opt/spark_apps/main/app.py"
+      param: "9990"
+  application: "/opt/spark_apps/main/app.py"
