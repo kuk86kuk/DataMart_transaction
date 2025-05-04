@@ -1,7 +1,6 @@
 version: 10.0
-pipeline:
-  application_args:
-      --sql-base: "{{ /sql/datamarts/ }}"
-      --env: "{{ prod }}"
-      param: "9990"
-  application: "/opt/spark_apps/main/app.py"
+application_args:
+    --sql-base: "{{ /sql/datamarts/ }}"
+    --env: "{{ prod }}"
+    param: "9990"
+application: "/opt/spark_apps/main/app.py"
