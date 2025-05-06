@@ -20,9 +20,9 @@ pipeline:
       function: "run"
       dependencies: []
       params:
-        source: "{{ params.source1 }}"
-        backup_source: "{{ params.source2 }}"
-        processing_date: "{{ params.date_9999 }}"
+        source: "params.source1"
+        backup_source: "params.source2"
+        processing_date: "params.date_9999"
       
     stage_calc_stg:
       name: "STAGING CALCULATION"
@@ -32,8 +32,8 @@ pipeline:
       function: "run"
       dependencies: ["stage_preload"]
       params:
-        main_source: "{{ params.source1 }}"
-        reference_date: "{{ params.date_9999 }}"
+        main_source: "params.source1"
+        reference_date: "params.date_9999"
       
     stage_check_stg:
       name: "STAGING VALIDATION"
@@ -43,9 +43,9 @@ pipeline:
       function: "run"
       dependencies: ["stage_calc_stg"]
       params:
-        source_to_validate: "{{ params.source1 }}"
-        secondary_source: "{{ params.source2 }}"
-        check_date: "{{ params.date_9999 }}"
+        source_to_validate: "params.source1"
+        secondary_source: "params.source2"
+        check_date: "params.date_9999"
       
     stage_calc_inc:
       name: "INCREMENT CALCULATION"
@@ -55,8 +55,8 @@ pipeline:
       function: "calculate"
       dependencies: ["stage_check_stg"]
       params:
-        primary_source: "{{ params.source1 }}"
-        delta_date: "{{ params.date_9999 }}"
+        primary_source: "params.source1"
+        delta_date: "params.date_9999"
       
     stage_check_inc:
       name: "INCREMENT VALIDATION"
@@ -67,9 +67,9 @@ pipeline:
       dependencies: ["stage_calc_inc"]
       params:
         validation_sources: 
-          - "{{ params.source1 }}"
-          - "{{ params.source2 }}"
-        snapshot_date: "{{ params.date_9999 }}"
+          - "params.source1"
+          - "params.source2"
+        snapshot_date: "params.date_9999"
       
     stage_MTP:
       name: "MART TABLE POPULATION"
@@ -80,9 +80,9 @@ pipeline:
       dependencies: ["stage_check_inc"]
       params:
         data_sources:
-          main: "{{ params.source1 }}"
-          supplementary: "{{ params.source2 }}"
-        load_date: "{{ params.date_9999 }}"
+          main: "params.source1"
+          supplementary: "params.source2"
+        load_date: "params.date_9999"
       
     stage_hist:
       name: "HISTORY UPDATE"
@@ -93,9 +93,9 @@ pipeline:
       dependencies: ["stage_MTP"]
       params:
         history_sources:
-          - "{{ params.source1 }}"
-          - "{{ params.source2 }}"
-        effective_date: "{{ params.date_9999 }}"
+          - "params.source1"
+          - "params.source2"
+        effective_date: "params.date_9999"
       
     final_check:
       name: "FINAL VALIDATION"
@@ -106,6 +106,6 @@ pipeline:
       dependencies: ["stage_hist"]
       params:
         all_sources:
-          primary: "{{ params.source1 }}"
-          secondary: "{{ params.source2 }}"
-        report_date: "{{ params.date_9999 }}"
+          primary: "params.source1"
+          secondary: "params.source2"
+        report_date: "params.date_9999"
