@@ -1,7 +1,7 @@
 pipeline:
-  name: "data_processing_pipeline"
+  name: "pipeline_formative_kpi_calc"
   description: "Complete data processing pipeline from preload to final validation"
-  env: "${ENV}"  # Will be replaced with actual environment (dev, prod, etc.)
+  env: "${ENV}"  
   schedule_interval: "@daily"
   default_args:
     retries: 2
@@ -20,9 +20,22 @@ pipeline:
       function: "run"
       dependencies: []
       params:
-        source: "params.source1"
-        backup_source: "params.source2"
-        processing_date: "params.date_9999"
+        query_mapping: "source:default"
+        datamart: "default"
+        query_path: "hdfs://namenode:8020/default/query.sql"
+        table_schema: "default"
+        table_name: "default_table"
+        repartition: "40"
+        partition_by: "none"
+        bucket_by: "none"
+        num_buckets: "1"
+        location: "hdfs://namenode:8020/user/jenkins/data"
+        do_truncate_table: "false"
+        do_drop_table: "false"
+        do_msck_repair_table: "false"
+        temp_view_name: "default_view"
+        cache_df: "false"
+
       
     stage_calc_stg:
       name: "STAGING CALCULATION"
@@ -32,8 +45,21 @@ pipeline:
       function: "run"
       dependencies: ["stage_preload"]
       params:
-        main_source: "params.source1"
-        reference_date: "params.date_9999"
+        query_mapping: "source:default"
+        datamart: "default"
+        query_path: "hdfs://namenode:8020/default/query.sql"
+        table_schema: "default"
+        table_name: "default_table"
+        repartition: "40"
+        partition_by: "none"
+        bucket_by: "none"
+        num_buckets: "1"
+        location: "hdfs://namenode:8020/user/jenkins/data"
+        do_truncate_table: "false"
+        do_drop_table: "false"
+        do_msck_repair_table: "false"
+        temp_view_name: "default_view"
+        cache_df: "false"
       
     stage_check_stg:
       name: "STAGING VALIDATION"
@@ -43,9 +69,21 @@ pipeline:
       function: "run"
       dependencies: ["stage_calc_stg"]
       params:
-        source_to_validate: "params.source1"
-        secondary_source: "params.source2"
-        check_date: "params.date_9999"
+        query_mapping: "source:default"
+        datamart: "default"
+        query_path: "hdfs://namenode:8020/default/query.sql"
+        table_schema: "default"
+        table_name: "default_table"
+        repartition: "40"
+        partition_by: "none"
+        bucket_by: "none"
+        num_buckets: "1"
+        location: "hdfs://namenode:8020/user/jenkins/data"
+        do_truncate_table: "false"
+        do_drop_table: "false"
+        do_msck_repair_table: "false"
+        temp_view_name: "default_view"
+        cache_df: "false"
       
     stage_calc_inc:
       name: "INCREMENT CALCULATION"
@@ -55,8 +93,21 @@ pipeline:
       function: "calculate"
       dependencies: ["stage_check_stg"]
       params:
-        primary_source: "params.source1"
-        delta_date: "params.date_9999"
+        query_mapping: "source:default"
+        datamart: "default"
+        query_path: "hdfs://namenode:8020/default/query.sql"
+        table_schema: "default"
+        table_name: "default_table"
+        repartition: "40"
+        partition_by: "none"
+        bucket_by: "none"
+        num_buckets: "1"
+        location: "hdfs://namenode:8020/user/jenkins/data"
+        do_truncate_table: "false"
+        do_drop_table: "false"
+        do_msck_repair_table: "false"
+        temp_view_name: "default_view"
+        cache_df: "false"
       
     stage_check_inc:
       name: "INCREMENT VALIDATION"
@@ -66,10 +117,21 @@ pipeline:
       function: "validate"
       dependencies: ["stage_calc_inc"]
       params:
-        validation_sources: 
-          - "params.source1"
-          - "params.source2"
-        snapshot_date: "params.date_9999"
+        query_mapping: "source:default"
+        datamart: "default"
+        query_path: "hdfs://namenode:8020/default/query.sql"
+        table_schema: "default"
+        table_name: "default_table"
+        repartition: "40"
+        partition_by: "none"
+        bucket_by: "none"
+        num_buckets: "1"
+        location: "hdfs://namenode:8020/user/jenkins/data"
+        do_truncate_table: "false"
+        do_drop_table: "false"
+        do_msck_repair_table: "false"
+        temp_view_name: "default_view"
+        cache_df: "false"
       
     stage_MTP:
       name: "MART TABLE POPULATION"
@@ -79,10 +141,21 @@ pipeline:
       function: "run"
       dependencies: ["stage_check_inc"]
       params:
-        data_sources:
-          main: "params.source1"
-          supplementary: "params.source2"
-        load_date: "params.date_9999"
+        query_mapping: "source:default"
+        datamart: "default"
+        query_path: "hdfs://namenode:8020/default/query.sql"
+        table_schema: "default"
+        table_name: "default_table"
+        repartition: "40"
+        partition_by: "none"
+        bucket_by: "none"
+        num_buckets: "1"
+        location: "hdfs://namenode:8020/user/jenkins/data"
+        do_truncate_table: "false"
+        do_drop_table: "false"
+        do_msck_repair_table: "false"
+        temp_view_name: "default_view"
+        cache_df: "false"
       
     stage_hist:
       name: "HISTORY UPDATE"
@@ -92,10 +165,21 @@ pipeline:
       function: "update"
       dependencies: ["stage_MTP"]
       params:
-        history_sources:
-          - "params.source1"
-          - "params.source2"
-        effective_date: "params.date_9999"
+        query_mapping: "source:default"
+        datamart: "default"
+        query_path: "hdfs://namenode:8020/default/query.sql"
+        table_schema: "default"
+        table_name: "default_table"
+        repartition: "40"
+        partition_by: "none"
+        bucket_by: "none"
+        num_buckets: "1"
+        location: "hdfs://namenode:8020/user/jenkins/data"
+        do_truncate_table: "false"
+        do_drop_table: "false"
+        do_msck_repair_table: "false"
+        temp_view_name: "default_view"
+        cache_df: "false"
       
     final_check:
       name: "FINAL VALIDATION"
@@ -105,7 +189,18 @@ pipeline:
       function: "run_all"
       dependencies: ["stage_hist"]
       params:
-        all_sources:
-          primary: "params.source1"
-          secondary: "params.source2"
-        report_date: "params.date_9999"
+        query_mapping: "source:default"
+        datamart: "default"
+        query_path: "hdfs://namenode:8020/default/query.sql"
+        table_schema: "default"
+        table_name: "default_table"
+        repartition: "40"
+        partition_by: "none"
+        bucket_by: "none"
+        num_buckets: "1"
+        location: "hdfs://namenode:8020/user/jenkins/data"
+        do_truncate_table: "false"
+        do_drop_table: "false"
+        do_msck_repair_table: "false"
+        temp_view_name: "default_view"
+        cache_df: "false"
