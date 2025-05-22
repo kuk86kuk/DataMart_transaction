@@ -20,7 +20,7 @@ pipeline:
       function: "run"
       dependencies: []
       params:
-        query_mapping: "{stg_table:name}"
+        query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
         query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
@@ -45,7 +45,7 @@ pipeline:
       function: "run"
       dependencies: ["stage_preload"]
       params:
-        query_mapping: "{stg_table: name}"
+        query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
         query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
@@ -69,7 +69,7 @@ pipeline:
       function: "run"
       dependencies: ["stage_calc_stg"]
       params:
-        query_mapping: "{stg_table: name}"
+        query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
         query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
@@ -93,7 +93,7 @@ pipeline:
       function: "calculate"
       dependencies: ["stage_check_stg"]
       params:
-        query_mapping: "{stg_table: name}"
+        query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
         query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
@@ -117,7 +117,7 @@ pipeline:
       function: "validate"
       dependencies: ["stage_calc_inc"]
       params:
-        query_mapping: "{stg_table: name}"
+        query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
         query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
@@ -141,7 +141,7 @@ pipeline:
       function: "run"
       dependencies: ["stage_check_inc"]
       params:
-        query_mapping: "{stg_table: name}"
+        query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
         query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
@@ -165,7 +165,7 @@ pipeline:
       function: "update"
       dependencies: ["stage_MTP"]
       params:
-        query_mapping: "{stg_table: name}"
+        query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
         query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
@@ -189,7 +189,7 @@ pipeline:
       function: "run_all"
       dependencies: ["stage_hist"]
       params:
-        query_mapping: "{stg_table: name}"
+        query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
         query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
