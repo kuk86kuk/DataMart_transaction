@@ -22,7 +22,7 @@ pipeline:
       params:
         query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
-        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
+        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -47,7 +47,7 @@ pipeline:
       params:
         query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
-        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
+        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -71,7 +71,7 @@ pipeline:
       params:
         query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
-        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
+        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -95,7 +95,7 @@ pipeline:
       params:
         query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
-        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
+        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -119,7 +119,7 @@ pipeline:
       params:
         query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
-        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
+        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -143,7 +143,7 @@ pipeline:
       params:
         query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
-        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
+        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -167,7 +167,7 @@ pipeline:
       params:
         query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
-        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
+        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -191,7 +191,7 @@ pipeline:
       params:
         query_mapping: "stg_table:name"
         datamart: "DataMart_transaction"
-        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/sql/dml/kpi_calc/pred_stg_transaction.sql"
+        query_path: "hdfs://namenode:8020/datamarts/DataMart_transaction/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
