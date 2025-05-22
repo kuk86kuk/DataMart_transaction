@@ -17,4 +17,4 @@ WITH synthetic_data AS (
   FROM
     (SELECT explode(sequence(1, 1000)) AS seq) t
 )
-SELECT * FROM synthetic_data
+SELECT * FROM synthetic_data;
