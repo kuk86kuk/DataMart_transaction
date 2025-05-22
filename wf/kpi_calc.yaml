@@ -20,9 +20,9 @@ pipeline:
       function: "run"
       dependencies: []
       params:
-        query_mapping: "source:default"
-        datamart: "default"
-        query_path: "hdfs://namenode:8020/default/query.sql"
+        query_mapping: "{stg_table: name}"
+        datamart: "DataMart_transaction"
+        query_path: "hdfs://namenode:8020/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -45,9 +45,9 @@ pipeline:
       function: "run"
       dependencies: ["stage_preload"]
       params:
-        query_mapping: "source:default"
-        datamart: "default"
-        query_path: "hdfs://namenode:8020/default/query.sql"
+        query_mapping: "{stg_table: name}"
+        datamart: "DataMart_transaction"
+        query_path: "hdfs://namenode:8020/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -69,9 +69,9 @@ pipeline:
       function: "run"
       dependencies: ["stage_calc_stg"]
       params:
-        query_mapping: "source:default"
-        datamart: "default"
-        query_path: "hdfs://namenode:8020/default/query.sql"
+        query_mapping: "{stg_table: name}"
+        datamart: "DataMart_transaction"
+        query_path: "hdfs://namenode:8020/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -93,9 +93,9 @@ pipeline:
       function: "calculate"
       dependencies: ["stage_check_stg"]
       params:
-        query_mapping: "source:default"
-        datamart: "default"
-        query_path: "hdfs://namenode:8020/default/query.sql"
+        query_mapping: "{stg_table: name}"
+        datamart: "DataMart_transaction"
+        query_path: "hdfs://namenode:8020/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -117,9 +117,9 @@ pipeline:
       function: "validate"
       dependencies: ["stage_calc_inc"]
       params:
-        query_mapping: "source:default"
-        datamart: "default"
-        query_path: "hdfs://namenode:8020/default/query.sql"
+        query_mapping: "{stg_table: name}"
+        datamart: "DataMart_transaction"
+        query_path: "hdfs://namenode:8020/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -141,9 +141,9 @@ pipeline:
       function: "run"
       dependencies: ["stage_check_inc"]
       params:
-        query_mapping: "source:default"
-        datamart: "default"
-        query_path: "hdfs://namenode:8020/default/query.sql"
+        query_mapping: "{stg_table: name}"
+        datamart: "DataMart_transaction"
+        query_path: "hdfs://namenode:8020/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -165,9 +165,9 @@ pipeline:
       function: "update"
       dependencies: ["stage_MTP"]
       params:
-        query_mapping: "source:default"
-        datamart: "default"
-        query_path: "hdfs://namenode:8020/default/query.sql"
+        query_mapping: "{stg_table: name}"
+        datamart: "DataMart_transaction"
+        query_path: "hdfs://namenode:8020/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -189,9 +189,9 @@ pipeline:
       function: "run_all"
       dependencies: ["stage_hist"]
       params:
-        query_mapping: "source:default"
-        datamart: "default"
-        query_path: "hdfs://namenode:8020/default/query.sql"
+        query_mapping: "{stg_table: name}"
+        datamart: "DataMart_transaction"
+        query_path: "hdfs://namenode:8020/sql/dml/kpi_calc/pred_stg_transaction.sql"
         table_schema: "default"
         table_name: "default_table"
         repartition: "40"
@@ -204,3 +204,4 @@ pipeline:
         do_msck_repair_table: "false"
         temp_view_name: "default_view"
         cache_df: "false"
+        
