@@ -8,4 +8,3 @@ select
     "SUM(amount)" as total_amount_test,
     "AVG(amount)" as _test  
     
-    
