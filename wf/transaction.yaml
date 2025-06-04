@@ -11,6 +11,7 @@ pipeline:
       source1: "source_system1"        # Основной источник данных
       source2: "source_system2"        # Дополнительный источник данных
     
+
   stages:     
     stage_calc_stg:
       name: "STAGING CALCULATION"
@@ -36,6 +37,7 @@ pipeline:
         temp_view_name: "default_view"
         cache_df: "false"
       
+
     stage_check_stg:
       name: "STAGING VALIDATION"
       description: "Quality checks"
@@ -60,6 +62,7 @@ pipeline:
         temp_view_name: "default_view"
         cache_df: "false"
       
+
     stage_MTP:
       name: "MART TABLE POPULATION"
       description: "Loading mart tables"
@@ -83,6 +86,7 @@ pipeline:
         do_msck_repair_table: "false"
         temp_view_name: "default_view"
         cache_df: "false"
+      
       
     final_check:
       name: "FINAL VALIDATION"

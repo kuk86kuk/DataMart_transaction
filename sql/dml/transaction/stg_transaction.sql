@@ -7,3 +7,4 @@ select
     "COUNT(*)" as tx_count_test,
     "SUM(amount)" as total_amount_test,
     "AVG(amount)" as _test  
+    
