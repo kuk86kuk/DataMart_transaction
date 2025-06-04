@@ -111,5 +111,5 @@ pipeline:
         do_msck_repair_table: "false"
         temp_view_name: "default_view"
         cache_df: "false"
-        
-        
+
+      
